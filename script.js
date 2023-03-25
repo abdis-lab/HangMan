@@ -6,7 +6,7 @@ const notification = document.getElementById('notification-container')
 const finalMessage = document.getElementById('final-message')
 
 
-const figureParts = document.querySelectorAll('.figure.part');
+const figureParts = document.querySelectorAll('.figure-part');
 
 const words = [
     'buddy', 
@@ -44,6 +44,9 @@ function displayWord(){
     if (innerWord === selectedWord){
         finalMessage.innerText = 'Congratulation! You Won! ';
         popup.style.display = 'flex';
+        document.querySelector('.figure-container').style.backgroundColor = 'green';
+    }else {
+        document.querySelector('.figure-container').style.backgroundColor = '';
     }
 }
 // Update the wrong letters 
@@ -56,7 +59,7 @@ function updateWrongLettersEl(){
 
     //Display parts
     figureParts.forEach((part, index) => {
-        const errors =  wrongLetters.length - figureParts.length;
+        const errors =  wrongLetters.length;
 
         if(index < errors){
             part.style.display = 'block';
@@ -70,6 +73,9 @@ function updateWrongLettersEl(){
     if (wrongLetters.length === figureParts.length){
         finalMessage.innerText = 'Unfortunatly you Lost.';
         popup.style.display = 'flex';
+        document.querySelector('.figure-container').style.backgroundColor = 'red';
+    }else {
+        document.querySelector('.figure-container').style.backgroundColor = '';
     }
 }
 // Show notification
